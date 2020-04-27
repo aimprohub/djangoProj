@@ -1,0 +1,53 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .well {
+        background-color:#374b80;
+        color:white;
+    }
+    body{
+        background-image: url(blog/abc.png);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+
+  </style>
+
+
+</head>
+<body> 
+
+<div class="container">
+  <h2>License Agreement for Mass Employee Check</h2>
+  <div class="well">*Specialized Employee Attrition Prediction*</div>
+  <div class="well well-lg">Please make sure you have agreed with the insituition before uploading any 
+      confidential data of employees and make sure it does not violate Privacy Rights. 
+  <div class="form-group row">
+      
+     <p> <input type="checkbox"> I have read all Terms and Conditions and wish to share my Private Organizational data in this platform
+        </p>
+    </div>
+
+
+
+<p>Select local CSV File:</p>
+<form action="read/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<input type="file" name="document"><br>
+    <button class="btn btn1" type="submit">upload</button>
+    </form>
+
+    
+
+    
+  </body>
+{% endblock content%}

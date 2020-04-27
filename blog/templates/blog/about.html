@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+   <p class="lead">{{title}} Page</p><hr>
+   <div class="jumbotron">
+      <h1 class="display-4">Page is under construction</h1>
+      <p class="lead">---------</p>
+      <hr class="my-2">
+      <p>More info</p>
+      <p class="lead">
+         <a class="btn btn-primary btn-sm" href="{% url 'blog-home' %}" role="button">back to Home Page</a>
+      </p>
+   </div>
+{% endblock content%}
