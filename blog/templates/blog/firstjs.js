@@ -8,5 +8,6 @@ var fileInput = document.getElementById("csv"),
         // start reading the file. When it is done, calls the onload event defined above.
         reader.readAsBinaryString(fileInput.files[0]);
     };
+    
 
 fileInput.addEventListener('change', readFile);
