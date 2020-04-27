@@ -1,2 +1,0 @@
-# djangoProj
- college projects
