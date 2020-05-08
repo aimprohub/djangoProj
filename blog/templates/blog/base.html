@@ -25,21 +25,35 @@
           <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">
             <img  width="40"
                   src="https://www.edigitalagency.com.au/wp-content/uploads/instagram-logo-png-paint-brush-colour-1.png">
-           Attrition Blog</a>
+           Django Blog</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-              <a class="nav-item nav-link" href="{% url 'blog-prediction' %}">Prediction</a>
-              <a class="nav-item nav-link" href="{% url 'blog-upload' %}">Upload</a>
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+                <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+                <a class="nav-item nav-link" href="{% url 'blog-prediction' %}">Prediction</a>
+                <a class="nav-item nav-link" href="{% url 'blog-upload' %}">Upload</a>
+              {% endif %}
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
+            {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{user.username | capfirst}}
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                </li>
+
+            {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'resister' %}">Register</a>
+            {% endif %}
             </div>
           </div>
         </div>
@@ -48,8 +62,16 @@
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8">
+          {% if messages %}
+            {% for message in messages  %}
+              <div class="alert alert-{{message.tags}}">
+                {{message}}
+              </div>
+            {% endfor %}
+          {% endif %}
           {% block content %}{% endblock %}
         </div>
+         {% if user.is_authenticated %}
         <div class="col-md-4">
           <div class="content-section">
             <h3>Latest Updates</h3>
@@ -63,13 +85,14 @@
             </p>
           </div>
         </div>
+         {% endif %}
       </div>
     </main>
-    <footer class="footer">
+    {% comment %} <footer class="footer">
       <div class="container">
-        <span class="text-muted">Developed By @....</span>
+        <span class="text-muted">Developed By @ShrikantKale</span>
       </div>
-    </footer>
+    </footer> {% endcomment %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import login_required
 # data
 # posts = [
 #     {
@@ -20,29 +21,31 @@ from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
-
+@login_required()
 def home(request):
     context = {'posts': Post.objects.all().order_by('-date_posted'), 'title': 'Home'}
     return render(request, 'blog/home.html', context)
 
-
+@login_required()
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
-
+@login_required()
 def prediction(request): 
     return render(request, 'blog/prediction.html', {'title':'Prediction'})
 
-
+@login_required()
 def upload(request): 
     return render(request, 'blog/upload.html', {'title':'Upload'})
 
+@login_required()
 def name(request): 
     return render(request, 'blog/name.html', {'title':'Name'})
 
+@login_required()
 def name2(request): 
     return render(request, 'blog/name2.html', {'title':'Name2'})
 
-
+@login_required()
 def trial(request):
     if request.method=='POST':
         income=request.POST.get('income')
@@ -58,7 +61,8 @@ def trial(request):
 
         return render(request, 'blog/name.html', {"addition" : add} )
     return render(request, 'blog/prediction.html')
-
+    
+@login_required()
 def read(request):
     
     if request.method =='POST':
