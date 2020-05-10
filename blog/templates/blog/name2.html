@@ -6,5 +6,135 @@
     {{ form }}
     <input type="submit" value="Submit">
 </form> -->
+ <!-- Button trigger modal -->
+
+    <table class="table table-bordered table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Employee Number</th>
+                <th>Employee Name</th>
+                <th>Link</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">12345</td>
+                    <td>Tanmay Mahindrakar</td>
+                    <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modelId">
+      Launch Info
+    </button></td>
+                </tr>
+                <tr>
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+    </table>
+    <!-- Modal -->
+    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              Distance from home:<br>
+              Salary:
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <table class="table table-striped table-hover table-inverse table-sm">
+      <thead class="thead-inverse">
+         <tr>
+         <th>ID</th>
+         <th>First name</th>
+         <th>Last name</th>
+         <th>Email</th>
+         </tr>
+         </thead>
+         <tbody>
+       
+         <tr>
+            <td scope="row">123</td>
+            <td>Tanmay</td>
+            <td>Mahindrakar</td>
+            <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modelId">Launch Info</button></td>
+         </tr>
+          <tr>
+            <td scope="row">123</td>
+            <td>Tanmay</td>
+            <td>Mahindrakar</td>
+            <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modelId">Launch Info</button></td>
+         </tr>
+          <tr>
+            <td scope="row">123</td>
+            <td>Tanmay</td>
+            <td>Mahindrakar</td>
+            <td><button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#modelId">Launch Info</button></td>
+         </tr>
+            
+         </tbody>
+   </table>
+<br>
+<br>
+
+<div class="input-group">
+    <span class="input-group-addon">Monthly Income  </span>
+    <input type="text" name="name" id="name" class="form-control" placeholder="placeholder">
+    <span class="input-group-addon">sufix</span>
+</div>
+<br><br>
+<table class="table table-striped table-inverse table-responsive">
+    <thead class="thead-inverse">
+        <tr>
+            <th><label for="ex1">Income</label></th>
+            <th><input class="form-control" id="ex1" type="text" name="par1" required></th>
+            
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row"><label for="ex1">Age (Yrs)</label><input class="form-control" id="ex1" type="text" name="par2" required></td>
+                <td><label for="ex1">Distance from Home(Km)</label><input class="form-control" id="ex1" type="text" name="par3"></td>
+                
+            </tr>
+            <tr>
+                <td scope="row"><label for="ex1">Distance from Home(Km)</label></td>
+                <td> <input class="form-control" id="ex1" type="text" name="par3"></td>
+                
+            </tr>
+            <tr>
+                <td scope="row"><label for="ex1">Experience (Yrs)</label></td>
+                <td> <input class="form-control" id="ex1" type="text" name="par3"></td>
+                
+            </tr>
+            <tr>
+                <td scope="row"><label for="ex1">Distance from Home(Km)</label></td>
+                <td> <input class="form-control" id="ex1" type="text" name="par4"></td>
+                
+            </tr>
+            <tr>
+                <td scope="row"><label for="ex1">Distance from Home(Km)</label></td>
+                <td> <input class="form-control" id="ex1" type="text" name="par4"></td>
+                
+            </tr>
+        </tbody>
+</table>
+
+
 
 {% endblock %}

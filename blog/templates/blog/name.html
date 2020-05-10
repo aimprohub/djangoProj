@@ -6,5 +6,163 @@
     {{ form }}
     <input type="submit" value="Submit">
 </form> -->
-addition123=={{addition}}
+
+{% if addition %}
+<div class="card text-white bg-info">
+  <img class="card-img-top" src="holder.js/100px180/" alt="">
+  <div class="card-body">
+    <h4 class="card-title">Employee Result:</h4>
+    <p class="card-text">Your Employee is Safe</p>
+  </div>
+</div>
+{% else %}
+<div class="card text-white bg-info">
+  <img class="card-img-top" src="holder.js/100px180/" alt="">
+  <div class="card-body">
+    <h4 class="card-title">Employee Result:</h4>
+    <p class="card-text">Your Employee is not Safe</p>
+  </div>
+</div>
+{% endif %}
+<br>
+<br>
+
+ 
+<h2>What might bother the employee?</h2>
+<ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center active">
+        Unsatisfied Attribute
+        <span class="badge badge-secondary badge-pill">status</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+        Satisfied Attribute
+        <span class="badge badge-secondary badge-pill">status</span>
+    </li>
+</ul>
+<br>
+<br>
+<h5> Interpretation table</h5>
+<ul class="list-group">
+{% if par1 > 1000 %}
+    <li class="list-group-item d-flex justify-content-between align-items-center active">
+        Monthly Income
+        <span class="badge badge-secondary badge-pill">satisfied</span>
+    </li>
+{% else %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Monthly Income
+        <span class="badge badge-secondary badge-pill">unsatisfied</span>
+    </li>
+{% endif %}
+
+
+{% if par2 > 1000 %}
+    <li class="list-group-item d-flex justify-content-between align-items-center active">
+        Bonus Rate
+        <span class="badge badge-secondary badge-pill">satisfied</span>
+    </li>
+{% else %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+       Bonus Rate
+        <span class="badge badge-secondary badge-pill">unsatisfied</span>
+    </li>
+{% endif %}
+
+
+{% if par3 > 1000 %}
+    <li class="list-group-item d-flex justify-content-between align-items-center active">
+        Age
+        <span class="badge badge-secondary badge-pill">satisfied</span>
+    </li>
+{% else %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Age
+        <span class="badge badge-secondary badge-pill">unsatisfied</span>
+    </li>
+{% endif %}
+
+
+{% if par4 > 1000 %}
+    <li class="list-group-item d-flex justify-content-between align-items-center active">
+       Total Working Years
+        <span class="badge badge-secondary badge-pill">satisfied</span>
+    </li>
+{% else %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Total Working Years
+        <span class="badge badge-secondary badge-pill">unsatisfied</span>
+    </li>
+{% endif %}
+
+
+{% if par5 > 1000 %}
+    <li class="list-group-item d-flex justify-content-between align-items-center active">
+        Years at Company
+        <span class="badge badge-secondary badge-pill">satisfied</span>
+    </li>
+{% else %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Years at Company
+        <span class="badge badge-secondary badge-pill">unsatisfied</span>
+    </li>
+{% endif %}
+
+{% if par6 > 1000 %}
+    <li class="list-group-item d-flex justify-content-between align-items-center active">
+        Years inveted in a particual Domain
+        <span class="badge badge-secondary badge-pill">satisfied</span>
+    </li>
+{% else %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Years inveted in a particual Domain
+        <span class="badge badge-secondary badge-pill">unsatisfied</span>
+    </li>
+{% endif %}
+
+{% if par7 > 1000 %}
+    <li class="list-group-item d-flex justify-content-between align-items-center active">
+        Distance from Home
+        <span class="badge badge-secondary badge-pill">satisfied</span>
+    </li>
+{% else %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Distance from Home
+        <span class="badge badge-secondary badge-pill">unsatisfied</span>
+    </li>
+{% endif %}
+
+{% if par8 > 1000 %}
+    <li class="list-group-item d-flex justify-content-between align-items-center active">
+        Monthly Income
+        <span class="badge badge-secondary badge-pill">satisfied</span>
+    </li>
+{% else %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Monthly Income
+        <span class="badge badge-secondary badge-pill">unsatisfied</span>
+    </li>
+{% endif %}
+
+
+</ul>
+
+
+
+
+
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-5">Imporve Employee satisfaction?</h1>
+        <p class="lead">What are the current trends in the Industry?</p>
+        <hr class="my-2">
+        <p>Click to explore employee benefit programs</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="https://www.humanresourcestoday.com/employee-benefits/trends/" role="button">More Info</a>
+        </p>
+    </div>
+</div>
+
+Attrition=={{addition}}
 {% endblock %}

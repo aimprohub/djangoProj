@@ -8,11 +8,11 @@ urlpatterns = [
     path('about/', views.about, name = 'blog-about'),
     path('prediction/', views.prediction, name = 'blog-prediction'),
     path('upload/', views.upload, name = 'blog-upload'),
-    # path('name/', views.name, name = 'blog-name'),
+    path('name/', views.name, name = 'blog-name'),
 
     # path('prediction/', views.trial, name='trial'),
-    path('prediction/trial/', views.trial, name='trial'),
-    path('prediction/trial/name/', views.name, name='name'),
+    path('prediction/trial1/', views.trial1, name='trial'),
+    path('prediction/trial1/name/', views.name, name='name'),
     path('upload/read/', views.read, name='read'),
     path('upload/read/name2/', views.name2, name='read2'),
 
