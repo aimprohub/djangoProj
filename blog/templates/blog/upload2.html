@@ -6,10 +6,10 @@
 <style>
     .well {
        
-        opacity:0.9;
+        opacity:0.8;
     }
     .bg-image{
-      background-image: url("{% static 'images/6.jpg' %}");
+      background-image: url("{% static 'images/abc.png' %}");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -18,74 +18,7 @@
       width: 1150px;
       background-color: #cccccc;
     }
-    table {
-  border-spacing: 1;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
-  
-  
-}
-table * {
-  position: center;
-}
-table td, table th {
-  padding-left: 8px;
-}
-table thead tr {
-  height: 60px;
-  background: #36304a;
-}
-table tbody tr {
-  height: 50px;
-}
-table tbody tr:last-child {
-  border: 0;
-}
-table td, table th {
-  text-align: center;
-}
-table td.l, table th.l {
-  text-align: right;
-}
-table td.c, table th.c {
-  text-align: center;
-}
-table td.r, table th.r {
-  text-align: center;
-}
-
-
-.table100-head th{
-  font-family: OpenSans-Regular;
-  font-size: 18px;
-  color: #fff;
-  line-height: 1.2;
-  font-weight: unset;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #f5f5f5;
-}
-
-tbody tr {
-  font-family: OpenSans-Regular;
-  font-size: 15px;
-  color: #808080;
-  line-height: 1.2;
-  font-weight: unset;
-}
-
-tbody tr:hover {
-  color: #555555;
-  background-color: #f5f5f5;
-  cursor: pointer;
-}
-
+    
 
   </style>
 
@@ -108,18 +41,14 @@ tbody tr:hover {
 
   <div class="well">
 
-    <div class="card" style="background-color:cadetblue; border-color:darkblue;">
+    <div class="card" style="background-color:lightgreen; border-color:darkblue;">
       <img class="card-img-top" src="holder.js/100x180/" alt="">
       <div class="card-body">
-        <h4 class="card-title">Title</h4>
+        <h4 class="card-title">CSV FORMAT FOR CURRENT DATA</h4>
         
-      </div>
-    </div>
-    
-
-
-    
-      <table>
+      
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
           <tr>
             <th>MonthlyIncome</th>
             <th>Rate</th>
@@ -131,7 +60,7 @@ tbody tr:hover {
             <th>DistanceFromHome</th>
             
           </tr>
-         
+         </thead>
           <tbody>
             <tr>
               <td scope="row">5993</td>
@@ -179,49 +108,104 @@ tbody tr:hover {
            
           </tbody>
       </table>
+      </div>
+    </div>
+        <br>
+        <br>
+<div class="well">
+
+    <div class="card" style="background-color:lightgreen; border-color:darkblue;">
+      <img class="card-img-top" src="holder.js/100x180/" alt="">
+      <div class="card-body">
+        <h4 class="card-title">CSV FORMAT FOR PREVIOUS DATA</h4>
+        
+      
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Attrition</th>
+            <th>MonthlyIncome</th>
+            <th>Rate</th>
+            <th>Age</th>
+            <th>Overtime</th>
+            <th>TotalWorkingHours</th>
+            <th>YearsAtCompany</th>
+            <th>YearsInCurrentRole</th>
+            <th>DistanceFromHome</th>
+            
+          </tr>
+         </thead>
+          <tbody>
+            <tr>
+              <td scope="row">1</td>
+              <td>5993</td>
+              <td>56599</td>
+              <td>41</td>
+              <td>1</td>
+              <td>8</td>
+              <td>6</td>
+              <td>6</td>
+              <td>5</td>
+            </tr>
+
+            <tr>
+              <td scope="row">1</td>
+              <td>5993</td>
+              <td>56599</td>
+              <td>41</td>
+              <td>1</td>
+              <td>8</td>
+              <td>6</td>
+              <td>6</td>
+              <td>5</td>
+            </tr>
+
+            <tr>
+              <td scope="row">1</td>
+              <td>5993</td>
+              <td>56599</td>
+              <td>41</td>
+              <td>1</td>
+              <td>8</td>
+              <td>6</td>
+              <td>6</td>
+              <td>5</td>
+            </tr>
+
+            <tr>
+              <td scope="row">1</td>
+              <td>5993</td>
+              <td>56599</td>
+              <td>41</td>
+              <td>1</td>
+              <td>8</td>
+              <td>6</td>
+              <td>6</td>
+              <td>5</td>
+            </tr>
+           
+          </tbody>
+      </table>
 
 
-
-{% comment %} <div class="card" style="background-color:white; border-color:darkblue;">
+        <div class="card" style="background-color:white; border-color:darkblue;">
   <img class="card-img-top" src="holder.js/100x180/" alt="">
   <div class="card-body">
     <h4 class="card-title">Title</h4>
     <p>Select local CSV File:</p>
 <form action="read/" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
+  Current File:<br>
 <input type="file" name="document"><br>
+    Previous File:<br>
+<input type="file" name="document1"><br>
     <button class="btn btn1" type="submit">upload</button>
     </form>
-    <p class="card-text">Text</p>
-  </div>
-</div> {% endcomment %}
 
 
-<br>
 
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h3>Uploading Scheme</h3><br>
-    <form action="upload2/" method="POST" >
-    {% csrf_token%}
-    Provide with current employee data as well as previous employee data<br>
-    <button type="submit" class="btn btn-primary" value="Predict">Multi File Upload</button>
-    </form>
-    <br>
-    <br>
-    <hr class="my-2">
-    
-    <p class="lead">
-      {% comment %} <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a> {% endcomment %}
-    <form action="upload1/" method="POST" >
-    {% csrf_token%}
-    Provide with current employee data only<br>
-    <button type="submit" class="btn btn-primary" value="Predict">Single File Upload</button>
-</form>
-    </p>
-  </div>
-</div>
+
 
 
     

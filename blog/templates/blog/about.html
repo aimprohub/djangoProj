@@ -1,6 +1,8 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+
 {% block content %}
-   <p class="lead">{{title}} Page</p><hr>
+   {% comment %} <p class="lead">{{title}} Page</p><hr>
    <div class="jumbotron">
       <h1 class="display-4">Page is under construction</h1>
       <p class="lead">---------</p>
@@ -9,5 +11,19 @@
       <p class="lead">
          <a class="btn btn-primary btn-sm" href="{% url 'blog-home' %}" role="button">back to Home Page</a>
       </p>
-   </div>
+   </div> {% endcomment %}
+   <style>
+   .bg-image{
+      background-image: url("{% static 'images/staff.jpg' %}");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      height: 800px;
+      width: 1200px;
+      background-color: #cccccc;
+    }
+  </style>
+  <body class="bg-image">
+  </body>
 {% endblock content%}

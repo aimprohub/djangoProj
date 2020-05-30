@@ -1,3 +1,4 @@
+
 body {
     background: #fafafa;
     color: #333333;
@@ -29,11 +30,12 @@ body {
   }
   
   .content-section {
-    background: #ffffff;
+    background: black;
     padding: 10px 20px;
     border: 1px solid #dddddd;
     border-radius: 3px;
     margin-bottom: 20px;
+    opacity: 0.3;
   }
   
   .article-title {
@@ -59,6 +61,7 @@ body {
     padding-bottom: 1px;
     margin-bottom: 4px;
     border-bottom: 1px solid #e3e3e3
+    
   }
   
   .article-metadata a:hover {
@@ -90,4 +93,7 @@ body {
     line-height: 60px;
     text-align: center;
     background-color: #eaeaea;
+}
+.transblock{
+  opacity: 0.3;
 }

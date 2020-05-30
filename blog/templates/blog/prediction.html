@@ -1,92 +1,173 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+
 {% block content %}
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  
+  {% comment %} <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> {% endcomment %}
   <style>
     .well {
-        background-color:#374b80;
-        color:white;
+       
+        opacity:0.9;
     }
-    body {
- background-image: url("paper.gif");
- background-color: #cccccc;
+    .bg-image{
+      background-image: url("{% static 'images/5.png' %}");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      height: 800px;
+      width: 1150px;
+      background-color: #cccccc;
+    }
+    table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  
+  
+}
+table * {
+  position: center;
+}
+table td, table th {
+  padding-left: 8px;
+}
+table thead tr {
+  height: 60px;
+  background: #36304a;
+}
+table tbody tr {
+  height: 50px;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table td, table th {
+  text-align: center;
+}
+table td.l, table th.l {
+  text-align: right;
+}
+table td.c, table th.c {
+  text-align: center;
+}
+table td.r, table th.r {
+  text-align: center;
 }
 
 
+.table100-head th{
+  font-family: OpenSans-Regular;
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+tbody tr {
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+tbody tr:hover {
+  color: #555555;
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+   
   </style>
 
 
-</head>
-<body> 
-
-<div class="container">
-  <h2>Prediction 11</h2>
+ <body class="bg-image">
+ <h2>Single Employee Prediction </h2>
   <div class="well well-sm">Employee Atrition</div>
-  <div class="well">*Anonymous Employee Data Entry for Generalised Prediction*</div>
-  <div class="well well-lg">Please enter details
+  <div class="well well-lg"><h4>Please enter details</h4>
   <div class="form-group row">
-    <form action="trial1/" method="POST">
+    
+  </div>
+{% comment %} <div style="background-image: url('{% static 'images/staff.jpg' %}'); width:1100px; height:700px;"> {% endcomment %}
+<div class="card" style="background-color:cadetblue; border-color:darkblue;">
+  <img class="card-img-top" src="holder.js/100x180/" alt="">
+  <div class="card-body" >
+    <h4 class="card-title">*Anonymous Employee Data Entry for Generalised Prediction*</h4>
+   
+    <form action="trial1/" method="POST" >
       {% csrf_token%}
-      <div class="col-xs-3">
-        <label for="ex1"> Monthly Income</label>
-        <input class="form-control" id="ex1" type="text" name="par1" required>
-      </div>
-      <div class="col-xs-3">
-        <label for="ex1">Rate</label>
-        <input class="form-control" id="ex1" type="text" name="par2">
-      </div>
-  <!-- </div>
-  
-  <div class="form-group row"> -->
-      <div class="col-xs-3">
-        <label for="ex1">Age</label>
-        <input class="form-control" id="ex1" type="text" name="par3">
-      </div>
-      <div class="col-xs-3">
-        <label for="ex1">Overtime(1/0)</label>
-        <input class="form-control" id="ex1" type="text" name="par4">
-      </div>
-      <div class="col-xs-3">
-        <label for="ex1">Total Working Years</label>
-        <input class="form-control" id="ex1" type="text" name="par5">
-      </div>
-      <div class="col-xs-3">
-        <label for="ex1">Years at Company</label>
-        <input class="form-control" id="ex1" type="text" name="par6">
-      </div>
-      <div class="col-xs-3">
-        <label for="ex1">Years in the Domain</label>
-        <input class="form-control" id="ex1" type="text" name="par7">
-      </div>
-      <div class="col-xs-3">
-        <label for="ex1">Distance from Home(km)</label>
-        <input class="form-control" id="ex1" type="text" name="par8">
-      </div>
+        <table>
+        <th>Paramter</th>
+        <th>Value</th>
+        <tr>
+        
+        <td><label for="ex1"> Monthly Income</label></td>
+        <td><input class="form-control" id="ex1" type="number" step="any" name="par1" required><td>
+     </tr>
+     <tr>
+       <td> <label for="ex1">Rate</label></td>
+        <td><input class="form-control" id="ex1" type="number" step="any" name="par2" required></td>
+      </tr>
+ 
+      <tr>
+        <td><label for="ex1">Age</label></td>
+       <td> <input class="form-control" id="ex1" type="number" step="any" name="par3" required></td>
+    
+      
+        <tr>
+        <td><label for="ex1">Total Working Years</label></td>
+        <td><input class="form-control" id="ex1" type="number" step="any" name="par5" required></td>
+      
+        <tr>
+       <td> <label for="ex1">Years at Company</label></td>
+       <td> <input class="form-control" id="ex1" type="number" step="any" name="par6" required></td>
+      </tr>
+
+      <tr>
+        <td><label for="ex1">Years in the Domain</label></td>
+        <td><input class="form-control" id="ex1" type="number" step="any" name="par7" required></td>
+        </tr>
+      
+        <tr>
+        <td><label for="ex1">Distance from Home(km)</label></td>
+        <td><input class="form-control" id="ex1" type="number" step="any" name="par8" required></td>
+        </tr>
   <!-- </div>
    
   <div class="form-group row"> -->
-      <div class="col-xs-3">    
-      <div class="form-check form-check-inline">
-        <label class="form-check-label"><br>Overtime Status<br>
-          <input class="form-check-input" type="checkbox" name="" id="" value="checkedValue">Yes<br>
-          <input class="form-check-input" type="checkbox" name="" id="" value="checkedValue">No
-        </label>
+      <tr>
+        <td><label class="form-check-label">Overtime Status</td>
+         <td> <input class="form-check-input" type="radio" name="par4" id="" value=1 required>Yes<br>
+          <input class="form-check-input" type="radio" name="par4" id="" value=0 required>No
+        </label></td>
+        </tr>
       </div>
      </div>
-   <!-- </div> -->
- </div>
-  
-  
-  <button type="submit" class="btn btn-primary" value="Predict">Predict</button>
+     <tr>
+    <td colspan="2"><button type="submit" class="btn btn-primary" value="Predict">Predict</button></td>
+    </tr>
   </div>
 </form>
-  </body>
-</body>
-</html>
+</table>
+  </div>
+</div>
+<div class="container">
+  
+
+
 {% endblock content%}

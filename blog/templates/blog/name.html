@@ -1,4 +1,6 @@
 {% extends 'blog/base.html' %}
+{% load static %}
+
 {% block content %}
 
  <!-- <form action="/your-name/" method="post">
@@ -6,25 +8,48 @@
     {{ form }}
     <input type="submit" value="Submit">
 </form> -->
-
+<style>
+.bg-image{
+      background-image: url("{% static 'images/2.jpg' %}");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      height: 800px;
+      width: 1200px;
+      background-color: #cccccc;
+    }
+    .well {
+        
+        opacity:0.75;
+    }
+</style>
+<body class="bg-image">
+<div class="well">
 {% if addition %}
 <div class="card text-white bg-info">
   <img class="card-img-top" src="holder.js/100px180/" alt="">
   <div class="card-body">
     <h4 class="card-title">Employee Result:</h4>
-    <p class="card-text">Your Employee is Safe</p>
+    <p class="card-text">Your Employee is Safe<br>Probability of Staying: {{perc}}%</p>
   </div>
 </div>
+
 {% else %}
 <div class="card text-white bg-info">
   <img class="card-img-top" src="holder.js/100px180/" alt="">
   <div class="card-body">
     <h4 class="card-title">Employee Result:</h4>
-    <p class="card-text">Your Employee is not Safe</p>
+    <p class="card-text">Your Employee is not Safe <br>Probability of Staying: {{perc}}%</p>
+    
   </div>
 </div>
 {% endif %}
 <br>
+<form action="stats/" method="POST">
+        {% csrf_token %}
+    <button type="submit" class="btn btn-primary" value="stats">Statistical Info</button>
+    </form>
 <br>
 
  
@@ -165,4 +190,6 @@
 </div>
 
 Attrition=={{addition}}
+</div>
+</body>
 {% endblock %}

@@ -10,12 +10,19 @@ urlpatterns = [
     path('upload/', views.upload, name = 'blog-upload'),
     path('name/', views.name, name = 'blog-name'),
 
+
     # path('prediction/', views.trial, name='trial'),
     path('prediction/trial1/', views.trial1, name='trial'),
     path('prediction/trial1/name/', views.name, name='name'),
     path('upload/read/', views.read, name='read'),
     path('upload/read/name2/', views.name2, name='read2'),
+    path('prediction/trial1/stats/', views.stats, name='stats1'),
+    path('upload/upload1/', views.upload1, name='upload1'),
+    path('upload/upload1/read/', views.read, name='read'),
+    path('upload/upload2/', views.upload2, name='upload2'),
 
+    path('upload/upload2/read/', views.read, name='read'),
+    #path('upload/upload1/read/name2', views.name2, name='read3'),
 ]
 
 if settings.DEBUG:

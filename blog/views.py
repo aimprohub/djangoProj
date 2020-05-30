@@ -1,14 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
+from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.decorators import login_required
 import numpy as np
+from sklearn import preprocessing
 import matplotlib.pyplot as plt
 import pandas as pd
 import sklearn
 import json
 import requests
+import os.path
+from os import path
+
+
 # data
 # posts = [
 #     {
@@ -52,6 +58,19 @@ def name2(request):
     return render(request, 'blog/name2.html', {'title':'Name2'})
 
 @login_required()
+def stats(request): 
+    return render(request, 'blog/stats.html', {'title':'stats'})
+
+@login_required()
+def upload1(request): 
+    return render(request, 'blog/upload1.html', {'title':'upload1'})
+
+@login_required()
+def upload2(request): 
+    return render(request, 'blog/upload2.html', {'title':'upload2'})
+
+
+@login_required()
 def trial(request):
     if request.method=='POST':
         income=request.POST.get('income')
@@ -88,6 +107,7 @@ def trial1(request):
         par6=float(request.POST.get('par6'))
         par7=float(request.POST.get('par7'))
         par8=float(request.POST.get('par8'))
+
     par1=float(request.POST.get('par1'))
     par2=float(request.POST.get('par2'))
     par3=float(request.POST.get('par3'))
@@ -96,7 +116,7 @@ def trial1(request):
     par6=float(request.POST.get('par6'))
     par7=float(request.POST.get('par7'))
     par8=float(request.POST.get('par8'))
-     
+    
 
     data = pd.read_csv('C:/Users/tanma/.spyder-py3/project.csv')
 
@@ -146,9 +166,14 @@ def trial1(request):
     
     result = int(logmodel.predict(input1))
     #print(result)
+    probs = logmodel.predict_proba(input1)[:,1]
+    perc = float(probs*100)
+
+    #image
+    
 
     return render(request, 'blog/name.html', {"addition" : result, "par1" : par1, "par2" : par2, "par3" : par3,
-    "par4" : par4, "par5" : par5, "par6" : par6, "par7" : par7} )
+    "par4" : par4, "par5" : par5, "par6" : par6, "par7" : par7, "perc" : perc} )
     
 @login_required()
 def read(request):
@@ -156,10 +181,66 @@ def read(request):
     if request.method =='POST':
         uploaded_file = request.FILES['document']
         fs = FileSystemStorage()   
-        fs.save(uploaded_file.name, uploaded_file) 
-    
+        fs.save('project.csv', uploaded_file)
 
+    if path.exists(r'C:\Users\tanma\old_myproj\djangoProj\media\project.csv'):   
+        
+        print('hello!!')
+        import pandas as pd
+        #from sklearn.model_selection import train_test_split
+        from sklearn.preprocessing import StandardScaler
+        from sklearn.linear_model import LogisticRegression
+
+        data = pd.read_csv('C:/Users/tanma/.spyder-py3/project.csv')
+        data['Rate'] = data['DailyRate'] * 20 + data['HourlyRate'] * 8 * 20 + data['MonthlyRate']
+
+        data.drop(['Department','EducationField'],axis=1).head()
+
+        sex = pd.get_dummies(data['Gender'],drop_first=True)
+
+        BT = pd.get_dummies(data['BusinessTravel'],drop_first=True)
+        BT=BT.drop(['Travel_Rarely'],axis=1)
+
+        Att = pd.get_dummies(data['Attrition'],drop_first=True)
+        Att = Att.rename(columns={"Yes":"Attr"})
+
+        MS = pd.get_dummies(data['MaritalStatus'],drop_first=True)
+        MS = MS.drop(['Single'],axis=1)
+
+        ovt = pd.get_dummies(data['OverTime'],drop_first=True)
+        ovt = ovt.rename(columns={"Yes":"Ovt"})
+
+        ne=data.drop(['Attrition','Gender','BusinessTravel','Department','EducationField','OverTime','Over18','JobRole','MaritalStatus','EmployeeNumber'],axis=1)
+
+        daa = pd.concat([ne,sex,BT,Att,MS,ovt],axis=1)
+
+        laa=daa.drop(['MonthlyRate','DailyRate','HourlyRate'],axis=1)
+
+        data = daa[['Attr','MonthlyIncome','Rate', 'Age', 'Ovt', 'TotalWorkingYears', 'YearsAtCompany','YearsInCurrentRole','DistanceFromHome']]
+
+        print(data)
+        X = data.iloc[:, 1:10]
+        y = data.iloc[:, 0]
+
+        test1 = pd.read_csv(r'C:\Users\tanma\old_myproj\djangoProj\media\project.csv')
+        print(test1)
+
+        sc = StandardScaler()
+        scaler = preprocessing.StandardScaler().fit(X)
+        X = scaler.transform(X)
+
+        logmodel = LogisticRegression()
+        logmodel.fit(X,y)
+
+        y_pred = logmodel.predict(test1)
+
+        print(y_pred)
+        print(test1)
+        test2 = test1.values.tolist()
+        print(test2)
+    else:
+        messages.error(request,'Please Upload CSV File')
         #latest_file = max(list_of_files, key = os.path.getctime)
         #print(latest_file)
         #return render(request, 'blog/name2.html')
-    return render(request, 'blog/name2.html')    
+    return render(request, 'blog/name2.html',{"test2" : test2, "y_pred"  : y_pred} )    
