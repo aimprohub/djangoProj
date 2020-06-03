@@ -228,19 +228,26 @@ def read(request):
         sc = StandardScaler()
         scaler = preprocessing.StandardScaler().fit(X)
         X = scaler.transform(X)
-
+        test2 = test1
+        test1 = scaler.transform(test1)
+        print(test2)
         logmodel = LogisticRegression()
         logmodel.fit(X,y)
 
         y_pred = logmodel.predict(test1)
 
         print(y_pred)
-        print(test1)
-        test2 = test1.values.tolist()
-        print(test2)
+        #print(test1)
+        #test2 = test1.values.tolist()
+        #print(test2)
+        
     else:
         messages.error(request,'Please Upload CSV File')
         #latest_file = max(list_of_files, key = os.path.getctime)
         #print(latest_file)
         #return render(request, 'blog/name2.html')
-    return render(request, 'blog/name2.html',{"test2" : test2, "y_pred"  : y_pred} )    
+    
+
+    
+
+    return render(request, 'blog/name2.html',{"test2" : test2, "y_pred"  : y_pred, "content" : content} )    

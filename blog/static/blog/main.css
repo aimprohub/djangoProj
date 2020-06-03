@@ -30,12 +30,11 @@ body {
   }
   
   .content-section {
-    background: black;
+    background: #e6eff1c7;
     padding: 10px 20px;
-    border: 1px solid #dddddd;
+    border: 1px solid #141212;
     border-radius: 3px;
     margin-bottom: 20px;
-    opacity: 0.3;
   }
   
   .article-title {
@@ -96,4 +95,12 @@ body {
 }
 .transblock{
   opacity: 0.3;
+}
+.card-style{
+    padding: 40px 20px;
+    border: 2px solid #e7e7e7;
+    background: #ffffffd9;
+    
+    border-radius: 15px;
+    box-shadow: 10px 10px #909090;
 }

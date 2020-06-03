@@ -11,7 +11,7 @@
     .bg-image{
       background-image: url("{% static 'images/6.jpg' %}");
       background-position: center;
-      background-repeat: no-repeat;
+      background-repeat: inherit;
       background-size: cover;
       position: relative;
       height: 800px;
@@ -75,9 +75,10 @@ tbody tr:nth-child(even) {
 tbody tr {
   font-family: OpenSans-Regular;
   font-size: 15px;
-  color: #808080;
+  color: #555555;
   line-height: 1.2;
   font-weight: unset;
+
 }
 
 tbody tr:hover {
@@ -92,7 +93,7 @@ tbody tr:hover {
 
 <body class="bg-image"> 
 
-<div class="container">
+<div class="container card-style">
   <h2>License Agreement for Mass Employee Check</h2>
   *Specialized Employee Attrition Prediction*
   >Please make sure you have agreed with the insituition before uploading any 
@@ -200,7 +201,7 @@ tbody tr:hover {
 <br>
 
 
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid card-style">
   <div class="container">
     <h3>Uploading Scheme</h3><br>
     <form action="upload2/" method="POST" >
