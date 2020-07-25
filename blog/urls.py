@@ -21,9 +21,13 @@ urlpatterns = [
     path('upload/upload1/read/', views.read, name='read'),
     path('upload/upload2/', views.upload2, name='upload2'),
 
-    path('upload/upload2/read/', views.read, name='read'),
+    path('upload/upload2/multi_read/', views.multi_read, name='multi_read'),
+    path('upload/upload2/multi_read/stats2/', views.stats2, name='stats2'),
+    path('upload/upload1/read/stats2/', views.stats2, name='stats2'),
+
     #path('upload/upload1/read/name2', views.name2, name='read3'),
-]
+
+]   
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

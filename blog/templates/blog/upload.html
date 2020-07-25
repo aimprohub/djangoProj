@@ -105,7 +105,7 @@ tbody tr:hover {
     </div>
     <br>
     <br>
-    <i class="fas fa-engine-warning">Please make sure your data is in format like below</i>
+    
 
   <div class="well">
 
@@ -120,7 +120,7 @@ tbody tr:hover {
 
 
     
-      <table>
+      {% comment %} <table>
           <tr>
             <th>MonthlyIncome</th>
             <th>Rate</th>
@@ -179,7 +179,7 @@ tbody tr:hover {
             </tr>
            
           </tbody>
-      </table>
+      </table> {% endcomment %}
 
 
 
@@ -206,7 +206,7 @@ tbody tr:hover {
     <h3>Uploading Scheme</h3><br>
     <form action="upload2/" method="POST" >
     {% csrf_token%}
-    Provide with current employee data as well as previous employee data<br>
+    <i>Provide with current employee data as well as previous employee data</i><br>
     <button type="submit" class="btn btn-primary" value="Predict">Multi File Upload</button>
     </form>
     <br>
@@ -217,7 +217,7 @@ tbody tr:hover {
       {% comment %} <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a> {% endcomment %}
     <form action="upload1/" method="POST" >
     {% csrf_token%}
-    Provide with current employee data only<br>
+    <i>Provide with current employee data only</i><br>
     <button type="submit" class="btn btn-primary" value="Predict">Single File Upload</button>
 </form>
     </p>

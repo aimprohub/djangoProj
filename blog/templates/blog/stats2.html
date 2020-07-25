@@ -1,0 +1,240 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+.chart{
+    margin:200px auto;
+    width:600px;
+    height:300px;
+}
+</style>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawHist);
+      google.charts.setOnLoadCallback(drawHist2);
+      google.charts.setOnLoadCallback(drawHist3);
+
+function drawHist() {
+      var data = google.visualization.arrayToDataTable({{List_yrs_0_json|safe}});
+
+      var options = {
+        title: 'Age of Employees currently working in the Company(-ve Attrition)',
+        chartArea: {width: '50%'}, 
+        hAxis: {
+          title: 'Employee count',
+          minValue: 0,
+          textStyle: {
+            bold: true,
+            fontSize: 12,
+            color: '#4d4d4d'
+          },
+          titleTextStyle: {
+            bold: true,
+            fontSize: 18,
+            color: '#4d4d4d'
+          }
+        },
+        vAxis: {
+          title: 'Age group of Employees',
+          textStyle: {
+            fontSize: 14,
+            bold: true,
+            color: '#848484'
+          },
+          titleTextStyle: {
+            fontSize: 14,
+            bold: true,
+            color: '#848484'
+          }
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('drawHist'));
+      chart.draw(data, options);
+    }
+
+    function drawHist2() {
+      var data = google.visualization.arrayToDataTable({{List_yrs_1_json|safe}});
+
+      var options = {
+        title: 'Age of Employees who left the Company(+ve Attrition)',
+        chartArea: {width: '50%'},
+        colors: ['#e0440e'],
+        hAxis: {
+          title: 'Employee count',
+          minValue: 0,
+          textStyle: {
+            bold: true,
+            fontSize: 12,
+            color: '#4d4d4d'
+          },
+          titleTextStyle: {
+            bold: true,
+            fontSize: 18,
+            color: '#4d4d4d'
+          }
+        },
+        vAxis: {
+          title: 'Age group of Employees',
+          textStyle: {
+            fontSize: 14,
+            bold: true,
+            color: '#848484'
+          },
+          titleTextStyle: {
+            fontSize: 14,
+            bold: true,
+            color: '#848484'
+          }
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('drawHist2'));
+      chart.draw(data, options);
+    }
+    
+    function drawHist3() {
+      var data = google.visualization.arrayToDataTable({{current_yrs_in_comp_json|safe}});
+
+      var options = {
+        title: 'Number of Years worked in Company(Company Experience)',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Employee count',
+          minValue: 0,
+          textStyle: {
+            bold: true,
+            fontSize: 12,
+            color: '#4d4d4d'
+          },
+          titleTextStyle: {
+            bold: true,
+            fontSize: 18,
+            color: '#4d4d4d'
+          }
+        },
+        vAxis: {
+          title: 'Company Experience in Years',
+          textStyle: {
+            fontSize: 14,
+            bold: true,
+            color: '#848484'
+          },
+          titleTextStyle: {
+            fontSize: 14,
+            bold: true,
+            color: '#848484'
+          }
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('drawHist3'));
+      chart.draw(data, options);
+    }
+
+    </script>
+  
+
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChart1);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable({{ List_env_1_json|safe }});
+
+        var options = {
+          title: 'Environment Satisfaction Ex Employees (+ve Attrition)',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
+
+        chart.draw(data, options);
+      }
+      function drawChart1() {
+        var data = google.visualization.arrayToDataTable({{ List_env_0_json|safe }});
+
+        var options = {
+          title: 'Environment Satisfaction Current Employees(-ve Attrition)',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart0'));
+        //var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+      
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawdino);
+      google.charts.setOnLoadCallback(drawdino2);
+      function drawdino() {
+        var data = google.visualization.arrayToDataTable({{salary_1_list_json|safe}});
+
+        var options = {
+          title: 'Salary Statistics of Ex Employees(+ve Attrition)',
+          legend: { position: 'none' },
+          hAxis: {title: 'Income in Native Currency'},
+          vAxis: {title: 'Employee Count'},
+          colors: ['#e0440e']
+        };
+
+        var chart = new google.visualization.Histogram(document.getElementById('chart_dino'));
+        chart.draw(data, options);
+      }
+      function drawdino2() {
+        var data = google.visualization.arrayToDataTable({{salary_0_list_json|safe}});
+
+        var options = {
+          title: 'Salary Statistics for current Employees(-ve Attrition)',
+          legend: { position: 'none' },
+          hAxis: {title: 'Income in Native Currency'},
+          vAxis: {title: 'Employee Count'},
+        };
+
+        var chart = new google.visualization.Histogram(document.getElementById('chart_dino2'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+
+    
+    
+  </head>
+  <body>
+    <table>
+    <tr>
+    <td><div id="drawHist" style="width: 600px; height: 500px;"></div></td>
+    <td><div id="drawHist2" style="width: 600px; height: 500px;"></div></td>
+    </tr>
+
+    <tr>
+    <td><div id="donutchart0" style="width: 600px; height: 500px;"></div></td>
+    <td><div id="donutchart1" style="width: 600px; height: 500px;"></div></td>
+    </tr>
+
+    <tr>
+    <td><div id="chart_dino2" style="width: 600px; height: 500px;"></div></td>
+    <td><div id="chart_dino" style="width: 600px; height: 500px;"></div></td>
+    </tr>
+    
+    </table>
+    <div id="drawHist3" style="width: 1150px; height: 500px"></div>
+    
+    
+    
+    {% comment %} <div id="barchart_material" style="width: 900px; height: 500px;"></div> {% endcomment %}
+    
+  </body>
+
+
+</html>
+
+
+
+{% endblock %}

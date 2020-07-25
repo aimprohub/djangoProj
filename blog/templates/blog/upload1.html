@@ -25,7 +25,10 @@
 
 <body class="bg-image"> 
 
-<div class="container">
+
+
+
+<div class="container card-style">
   <h2>License Agreement for Mass Employee Check</h2>
   *Specialized Employee Attrition Prediction*
   >Please make sure you have agreed with the insituition before uploading any 
@@ -113,12 +116,13 @@
         <div class="card" style="background-color:white; border-color:darkblue;">
   <img class="card-img-top" src="holder.js/100x180/" alt="">
   <div class="card-body">
-    <h4 class="card-title">Title</h4>
+    <h4 class="card-title">File Uploading</h4>
     <p>Select local CSV File :</p>
 <form action="read/" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-<input type="file" name="document"><br>
-    <button class="btn btn1" type="submit">Upload</button>
+<input type="file" name="document" class="btn btn-secondary" required><br>
+<br>
+    <button class="btn btn-primary" margin="40%" type="submit">Upload</button>
     </form>
 </div>
     </div>
